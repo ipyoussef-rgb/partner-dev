@@ -1,0 +1,58 @@
+{
+  "home.title": {
+    "message": "KOBIL Partner Dev",
+    "description": "Browser tab title"
+  },
+  "home.metaDescription": {
+    "message": "Baue deine Super App auf KOBIL — Partner-Integrationsdokumentation auf Englisch und Deutsch.",
+    "description": "Meta description"
+  },
+  "home.tagline": {
+    "message": "Baue deine Super App auf KOBIL — Integrationsleitfaden für Partner.",
+    "description": "Hero subtitle"
+  },
+  "home.description": {
+    "message": "Verifizierte Endpoints, Body-Schemas, Sequenzdiagramme und ein 60-Minuten-End-to-End-Quickstart für Partner, die KOBIL Identity, Chat und Pay integrieren.",
+    "description": "Hero description"
+  },
+  "home.cta.start": {
+    "message": "0. Hier starten →",
+    "description": "Primary CTA"
+  },
+  "home.cta.quickstart": {
+    "message": "1. Quickstart (60 Min)",
+    "description": "Secondary CTA"
+  },
+  "home.feat.identity.title": {
+    "message": "KOBIL Identity",
+    "description": "Feature card title"
+  },
+  "home.feat.identity.desc": {
+    "message": "OIDC-Login auf Keycloak-Basis, mit dem zweiten Faktor in mIdentity.",
+    "description": "Feature card description"
+  },
+  "home.feat.chat.title": {
+    "message": "KOBIL Chat (mPower)",
+    "description": "Feature card title"
+  },
+  "home.feat.chat.desc": {
+    "message": "Server → Nutzer-Messaging mit Reply-Webhooks. Verifiziertes Body-Schema, Stolperfallen aufgelistet.",
+    "description": "Feature card description"
+  },
+  "home.feat.pay.title": {
+    "message": "KOBIL Pay (mPay)",
+    "description": "Feature card title"
+  },
+  "home.feat.pay.desc": {
+    "message": "Merchant-Transaktionen, in mIdentity signiert. Vollständige 12-Status-Tabelle und Persistenz-Regel enthalten.",
+    "description": "Feature card description"
+  },
+  "home.feat.prod.title": {
+    "message": "Production-Checkliste",
+    "description": "Feature card title"
+  },
+  "home.feat.prod.desc": {
+    "message": "Alles, was vor der Umstellung einer KOBIL-Integration auf Produktiv-Traffic verifiziert sein muss.",
+    "description": "Feature card description"
+  }
+}

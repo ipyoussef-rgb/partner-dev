@@ -1,0 +1,40 @@
+/**
+ * Light theme tuned to KOBIL brand-adjacent colors.
+ */
+
+:root {
+  --ifm-color-primary: #0f4c81;
+  --ifm-color-primary-dark: #0e4474;
+  --ifm-color-primary-darker: #0d406d;
+  --ifm-color-primary-darkest: #0a3559;
+  --ifm-color-primary-light: #11548e;
+  --ifm-color-primary-lighter: #125895;
+  --ifm-color-primary-lightest: #1463a8;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.07);
+  --ifm-heading-font-weight: 700;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #5fa8e6;
+  --ifm-color-primary-dark: #449ae2;
+  --ifm-color-primary-darker: #3793df;
+  --ifm-color-primary-darkest: #1f7bcb;
+  --ifm-color-primary-light: #7ab6ea;
+  --ifm-color-primary-lighter: #88beec;
+  --ifm-color-primary-lightest: #aed1f3;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.markdown table {
+  display: table;
+  width: 100%;
+}
+
+.markdown h2 {
+  margin-top: 2.5rem;
+}
+
+.admonition {
+  border-radius: 8px;
+}
