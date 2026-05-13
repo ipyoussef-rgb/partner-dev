@@ -14,7 +14,6 @@ const config = {
   projectName: 'partner-dev',
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
 
   i18n: {
     defaultLocale: 'en',
@@ -27,6 +26,9 @@ const config = {
 
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
   },
   themes: ['@docusaurus/theme-mermaid'],
 
