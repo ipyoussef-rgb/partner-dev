@@ -24,29 +24,22 @@ Run through this before production traffic. Each item below has bitten at least 
 
 - [ ] Server client has **Service Accounts Enabled = ON**.
 - [ ] Webhook URL is **publicly reachable, no auth header expected**.
-- [ ] Webhook path is **whitelisted in `proxy.ts`** / auth middleware.
+- [ ] Webhook path is **exempt from your app's auth middleware**.
 - [ ] Recipient identifier in the path is **email**, not OIDC `sub`.
 - [ ] `serviceUuid` in the body **equals the token's `client_id`**.
 - [ ] `messageType` uses **`processChatMessage`**, not `plainText`.
-- [ ] Outbound calls happen inside **`after()`** (or equivalent) so serverless functions don't kill them.
+- [ ] Outbound API calls complete before your request handler returns.
 
 ## Payments
 
 - [ ] `userId` in the body is the **OIDC `sub` UUID**.
 - [ ] `merchantId` and `merchantServiceUUID` both equal the **server client_id**.
 - [ ] `transactionTimeout ≤ 60`.
-- [ ] `merchantCallback` is an **absolute URL** built from `APP_BASE_URL`, not relative.
-- [ ] `merchantCallback` path is **whitelisted** and **does not require auth**.
+- [ ] `merchantCallback` is an **absolute, publicly reachable URL**.
+- [ ] `merchantCallback` path is **exempt from auth** middleware.
 - [ ] Persistence **never overwrites a final status** (`finished`, `cancelled`, `closed`, `timeout`, `error`, `void`, `refund`).
 - [ ] `idempotencyId` unique per attempt.
 - [ ] `amount` in **smallest currency unit** (cents).
-
-## Hosting (Vercel-specific)
-
-- [ ] `export const maxDuration = 60` on every route that calls Chat or Payments.
-- [ ] `APP_BASE_URL` env var = the canonical production URL (not a preview deployment).
-- [ ] Database connection pooling configured for serverless.
-- [ ] No keep-alive ping every few minutes — most serverless DB tiers meter compute hours.
 
 ## Observability
 

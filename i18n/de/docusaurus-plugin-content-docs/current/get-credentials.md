@@ -81,19 +81,20 @@ Erfolgreiche Antwort:
 
 Cache den Token ~270 s im Backend.
 
-## 1.5 — `.env` befüllen
+## 1.5 — Diese Werte aufheben
 
-```bash
-KOBIL_IDP_HOST=https://idp.<tenant>.kobil.com
-KOBIL_REALM=<realm>
-KOBIL_USER_CLIENT_ID=partner-app-user
-KOBIL_USER_CLIENT_SECRET=<einfügen>
-KOBIL_SERVER_CLIENT_ID=partner-app-server
-KOBIL_SERVER_CLIENT_SECRET=<einfügen>
-APP_BASE_URL=http://localhost:3000
-```
+Sechs Werte ziehen sich durch die ganze Integration:
 
-`.env` niemals committen. In `.gitignore`.
+| Wert | Beispiel |
+|---|---|
+| IDP-Host | `https://idp.<tenant>.kobil.com` |
+| Realm | `<realm>` |
+| User-UI-Client-ID | `partner-app-user` |
+| User-UI-Secret | *(aus Credentials-Tab)* |
+| Server-Client-ID | `partner-app-server` |
+| Server-Secret | *(aus Credentials-Tab)* |
+
+Secrets niemals committen.
 
 ## Häufige Fehler
 

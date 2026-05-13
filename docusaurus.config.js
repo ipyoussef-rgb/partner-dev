@@ -7,11 +7,8 @@ const config = {
   tagline: 'Integrate your service into the Germany App',
   favicon: 'img/favicon.svg',
 
-  url: 'https://partner-dev.vercel.app',
+  url: 'https://germany-app-partner-integration.example',
   baseUrl: '/',
-
-  organizationName: 'ipyoussef',
-  projectName: 'partner-dev',
 
   onBrokenLinks: 'warn',
 

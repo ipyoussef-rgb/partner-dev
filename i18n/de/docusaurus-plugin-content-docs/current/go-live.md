@@ -24,29 +24,22 @@ Geh das durch, bevor du Produktions-Traffic anschaltest. Jeder Punkt hat in mind
 
 - [ ] Server-Client hat **Service Accounts Enabled = AN**.
 - [ ] Webhook-URL ist **öffentlich, ohne Auth-Header**.
-- [ ] Webhook-Pfad in `proxy.ts` / Auth-Middleware **whitelisted**.
+- [ ] Webhook-Pfad **von Auth-Middleware ausgenommen**.
 - [ ] Empfänger im Pfad ist **E-Mail**, nicht OIDC-`sub`.
 - [ ] `serviceUuid` im Body **= Token-`client_id`**.
 - [ ] `messageType` benutzt **`processChatMessage`**, nicht `plainText`.
-- [ ] Outbound-Calls laufen in **`after()`** (oder Äquivalent), damit Serverless-Functions sie nicht abwürgen.
+- [ ] Outbound-API-Calls schließen ab, bevor dein Request-Handler returnt.
 
 ## Payments
 
 - [ ] `userId` im Body ist die **OIDC-`sub` UUID**.
 - [ ] `merchantId` und `merchantServiceUUID` beide = **server `client_id`**.
 - [ ] `transactionTimeout ≤ 60`.
-- [ ] `merchantCallback` ist **absolute URL** aus `APP_BASE_URL`, nicht relativ.
-- [ ] `merchantCallback`-Pfad **whitelisted**, **ohne Auth**.
+- [ ] `merchantCallback` ist **absolute, öffentlich erreichbare URL**.
+- [ ] `merchantCallback`-Pfad **von Auth-Middleware ausgenommen**.
 - [ ] Persistenz **überschreibt nie einen finalen Status** (`finished`, `cancelled`, `closed`, `timeout`, `error`, `void`, `refund`).
 - [ ] `idempotencyId` pro Versuch eindeutig.
 - [ ] `amount` in **kleinster Währungseinheit** (Cents).
-
-## Hosting (Vercel-spezifisch)
-
-- [ ] `export const maxDuration = 60` auf jeder Route, die Chat oder Payments aufruft.
-- [ ] `APP_BASE_URL` env var = die kanonische Prod-URL (nicht Preview-Deployment).
-- [ ] DB-Connection-Pooling für Serverless konfiguriert.
-- [ ] Kein Keep-Alive-Ping alle paar Minuten — Serverless-DB-Tiers messen Compute-Stunden.
 
 ## Observability
 

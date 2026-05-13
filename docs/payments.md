@@ -142,58 +142,13 @@ async function persistTransactionStatus(id: string, newStatus: string) {
 }
 ```
 
-## 4.7 — TypeScript helper
-
-```ts
-// lib/germany-app-pay.ts
-import { randomUUID } from "node:crypto";
-import { getServerToken } from "./germany-app-token";
-
-interface CreatePaymentInput {
-  userSub: string;
-  amountCents: number;
-  description: string;
-  callbackUrl: string;
-}
-
-export async function createPayment(input: CreatePaymentInput) {
-  const token = await getServerToken();
-  const url = `${process.env.KOBIL_PAY_HOST}/mpay-merchant/create/transaction`;
-
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      version: 1,
-      idempotencyId: randomUUID(),
-      userId: input.userSub,
-      merchantId: process.env.KOBIL_SERVER_CLIENT_ID,
-      merchantServiceUUID: process.env.KOBIL_SERVER_CLIENT_ID,
-      merchantName: "My Service",
-      merchantCallback: input.callbackUrl,
-      transactionTimeout: 60,
-      amount: input.amountCents,
-      tenantId: process.env.KOBIL_REALM,
-      currency: "EUR",
-      paymentContent: [[{ key: input.description, value: `${input.amountCents / 100} EUR` }]],
-    }),
-  });
-
-  if (!res.ok) throw new Error(`Pay create failed: ${res.status} ${await res.text()}`);
-  return res.json();
-}
-```
-
 ## Common errors
 
 | Symptom | Cause | Fix |
 |---|---|---|
 | 400 `transactionTimeout should be maximum 60` | Sent `>60` | Cap at 60 |
 | Callback received 401 by your app | Auth middleware intercepting | Whitelist callback path |
-| Status forever PENDING | Callback URL relative or unreachable | Use absolute URL with explicit `APP_BASE_URL` |
+| Status forever PENDING | `merchantCallback` URL is relative or unreachable | Use an absolute, publicly reachable URL |
 | Status overwritten with UNKNOWN / `inquiring status` | Naive persistence of `/status` ack | Apply persistence rule above |
 | 401 *Unauthorized* on create | Wrong `merchantId` or wrong realm | Verify `merchantId` = server client_id, `tenantId` = realm |
 | 404 *user not found* | Wrong `userId` (email instead of sub) | Use OIDC `sub` UUID |

@@ -46,26 +46,52 @@ sequenceDiagram
 
 Where `{idp_host}` is from [Step 1](/get-credentials).
 
-## 2.2 — Wire up your app
+## 2.2 — The three calls your app makes
 
-Any standard OIDC client works. With `openid-client` in Node:
+The flow is standard OIDC Authorization Code + PKCE. Use any OIDC library in any language, or call the endpoints directly.
 
-```ts
-import { Issuer } from "openid-client";
+**a. Redirect the user to authorize**
 
-const issuer = await Issuer.discover(
-  `${process.env.KOBIL_IDP_HOST}/auth/realms/${process.env.KOBIL_REALM}`
-);
-const client = new issuer.Client({
-  client_id: process.env.KOBIL_USER_CLIENT_ID,
-  client_secret: process.env.KOBIL_USER_CLIENT_SECRET,
-  redirect_uris: [`${process.env.APP_BASE_URL}/api/auth/user/callback`],
-  response_types: ["code"],
-  token_endpoint_auth_method: "client_secret_post",
-});
+```
+GET {idp_host}/auth/realms/{realm}/protocol/openid-connect/auth
+    ?client_id={user-client-id}
+    &redirect_uri={your-callback-url}
+    &response_type=code
+    &scope=openid+profile+email
+    &state={random}
+    &code_challenge={pkce-challenge}
+    &code_challenge_method=S256
 ```
 
-In the redirect: PKCE-protected authorize, callback exchanges the code for tokens, set a session cookie.
+**b. Receive the callback**
+
+The IDP redirects the user back to your `redirect_uri` with `?code=...&state=...`.
+
+**c. Exchange the code for tokens**
+
+```bash
+curl -X POST {idp_host}/auth/realms/{realm}/protocol/openid-connect/token \
+  -d 'grant_type=authorization_code' \
+  -d 'code={code-from-callback}' \
+  -d 'redirect_uri={your-callback-url}' \
+  -d 'client_id={user-client-id}' \
+  -d 'client_secret={user-client-secret}' \
+  -d 'code_verifier={pkce-verifier}'
+```
+
+Response:
+
+```json
+{
+  "access_token": "eyJ...",
+  "id_token": "eyJ...",
+  "refresh_token": "eyJ...",
+  "expires_in": 300,
+  "token_type": "Bearer"
+}
+```
+
+Decode the `id_token` for the user's claims (or call `/userinfo` with the access token). Establish your own session from there.
 
 ## 2.3 — Persist both `sub` and `email`
 

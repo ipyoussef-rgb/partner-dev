@@ -103,36 +103,8 @@ Wenn der User antwortet, POSTet die Plattform an deinen registrierten Webhook:
 ```
 
 :::warning Webhook ohne Auth-Header
-Der Webhook muss **öffentlich erreichbar ohne `Authorization`-Header** sein. Den Pfad in `proxy.ts` / Auth-Middleware whitelisten.
+Der Webhook muss **öffentlich erreichbar ohne `Authorization`-Header** sein. Wenn dein Stack standardmäßig Auth davor hängt, den Webhook-Pfad davon ausnehmen.
 :::
-
-## 3.5 — TypeScript-Helper
-
-```ts
-// lib/germany-app-chat.ts
-import { getServerToken } from "./germany-app-token";
-
-export async function sendChatMessage(recipientEmail: string, text: string) {
-  const token = await getServerToken();
-  const url = `${process.env.KOBIL_IDP_HOST}/auth/realms/${process.env.KOBIL_REALM}/mpower/v1/users/${encodeURIComponent(recipientEmail)}/message`;
-
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      serviceUuid: process.env.KOBIL_SERVER_CLIENT_ID,
-      version: 3,
-      messageType: "processChatMessage",
-      messageContent: { messageText: text },
-    }),
-  });
-
-  if (!res.ok) throw new Error(`Chat send failed: ${res.status} ${await res.text()}`);
-}
-```
 
 ## Häufige Fehler
 

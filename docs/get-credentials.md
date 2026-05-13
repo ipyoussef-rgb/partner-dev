@@ -81,19 +81,20 @@ A successful response looks like:
 
 Cache that token for ~270 s in your backend.
 
-## 1.5 — Save your `.env`
+## 1.5 — Keep these values
 
-```bash
-KOBIL_IDP_HOST=https://idp.<tenant>.kobil.com
-KOBIL_REALM=<realm>
-KOBIL_USER_CLIENT_ID=partner-app-user
-KOBIL_USER_CLIENT_SECRET=<paste>
-KOBIL_SERVER_CLIENT_ID=partner-app-server
-KOBIL_SERVER_CLIENT_SECRET=<paste>
-APP_BASE_URL=http://localhost:3000
-```
+Six values feed the rest of the integration:
 
-Never commit `.env`. Add it to `.gitignore`.
+| Variable | Example |
+|---|---|
+| IDP host | `https://idp.<tenant>.kobil.com` |
+| Realm | `<realm>` |
+| User-UI client ID | `partner-app-user` |
+| User-UI client secret | *(from Credentials tab)* |
+| Server client ID | `partner-app-server` |
+| Server client secret | *(from Credentials tab)* |
+
+Keep secrets out of source control.
 
 ## Common errors at this stage
 

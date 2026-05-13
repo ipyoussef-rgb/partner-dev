@@ -103,36 +103,8 @@ When the user replies, the platform POSTs to your registered webhook:
 ```
 
 :::warning Webhook must not require auth
-The webhook URL must be **publicly reachable with no `Authorization` header expected**. Whitelist its path in any `proxy.ts` / auth middleware.
+The webhook URL must be **publicly reachable with no `Authorization` header expected**. If your stack puts auth in front of it by default, exempt the webhook path.
 :::
-
-## 3.5 — TypeScript helper
-
-```ts
-// lib/germany-app-chat.ts
-import { getServerToken } from "./germany-app-token";
-
-export async function sendChatMessage(recipientEmail: string, text: string) {
-  const token = await getServerToken();
-  const url = `${process.env.KOBIL_IDP_HOST}/auth/realms/${process.env.KOBIL_REALM}/mpower/v1/users/${encodeURIComponent(recipientEmail)}/message`;
-
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      serviceUuid: process.env.KOBIL_SERVER_CLIENT_ID,
-      version: 3,
-      messageType: "processChatMessage",
-      messageContent: { messageText: text },
-    }),
-  });
-
-  if (!res.ok) throw new Error(`Chat send failed: ${res.status} ${await res.text()}`);
-}
-```
 
 ## Common errors
 

@@ -46,26 +46,52 @@ sequenceDiagram
 
 `{idp_host}` kommt aus [Schritt 1](/get-credentials).
 
-## 2.2 — Im Code
+## 2.2 — Die drei Calls, die deine App macht
 
-Jeder Standard-OIDC-Client funktioniert. Mit `openid-client` in Node:
+Der Flow ist Standard-OIDC Authorization Code + PKCE. Nimm irgendeine OIDC-Library in irgendeiner Sprache oder ruf die Endpoints direkt auf.
 
-```ts
-import { Issuer } from "openid-client";
+**a. Den User zur Authorize-URL umleiten**
 
-const issuer = await Issuer.discover(
-  `${process.env.KOBIL_IDP_HOST}/auth/realms/${process.env.KOBIL_REALM}`
-);
-const client = new issuer.Client({
-  client_id: process.env.KOBIL_USER_CLIENT_ID,
-  client_secret: process.env.KOBIL_USER_CLIENT_SECRET,
-  redirect_uris: [`${process.env.APP_BASE_URL}/api/auth/user/callback`],
-  response_types: ["code"],
-  token_endpoint_auth_method: "client_secret_post",
-});
+```
+GET {idp_host}/auth/realms/{realm}/protocol/openid-connect/auth
+    ?client_id={user-client-id}
+    &redirect_uri={dein-callback}
+    &response_type=code
+    &scope=openid+profile+email
+    &state={zufallswert}
+    &code_challenge={pkce-challenge}
+    &code_challenge_method=S256
 ```
 
-Beim Redirect: PKCE-Authorize, Callback tauscht den Code gegen Tokens, Session-Cookie setzen.
+**b. Den Callback empfangen**
+
+Der IDP leitet den User zurück auf deine `redirect_uri` mit `?code=...&state=...`.
+
+**c. Code gegen Tokens tauschen**
+
+```bash
+curl -X POST {idp_host}/auth/realms/{realm}/protocol/openid-connect/token \
+  -d 'grant_type=authorization_code' \
+  -d 'code={code-aus-callback}' \
+  -d 'redirect_uri={dein-callback}' \
+  -d 'client_id={user-client-id}' \
+  -d 'client_secret={user-client-secret}' \
+  -d 'code_verifier={pkce-verifier}'
+```
+
+Antwort:
+
+```json
+{
+  "access_token": "eyJ...",
+  "id_token": "eyJ...",
+  "refresh_token": "eyJ...",
+  "expires_in": 300,
+  "token_type": "Bearer"
+}
+```
+
+`id_token` dekodieren für die Claims (oder `/userinfo` mit dem Access-Token aufrufen). Deine eigene Session daraus aufbauen.
 
 ## 2.3 — `sub` UND `email` speichern
 

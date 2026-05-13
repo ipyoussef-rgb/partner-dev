@@ -53,7 +53,7 @@ Sortiert nach HTTP-Status. Steht dein Fehler nicht hier, melde dich bei deinem S
 
 | Symptom | Ursache | Fix |
 |---|---|---|
-| Payment-Status ewig PENDING | `merchantCallback` relativ oder unerreichbar | Absolute URL mit `APP_BASE_URL` |
+| Payment-Status ewig PENDING | `merchantCallback` relativ oder unerreichbar | Absolute, öffentlich erreichbare URL |
 | Payment-Status auf `UNKNOWN` / `inquiring status` überschrieben | Naives Persistieren des `/status`-Acks | [Persistenz-Regel](/payments#46--finalen-status-niemals-überschreiben) anwenden |
-| Aktion liefert 200, aber kein Chat angekommen | `void promise` abgewürgt, als Serverless-Function zurückkam | `import { after } from "next/server"` für Outbound |
+| Outbound-Call liefert in deinem Handler 200, kommt aber nie an der Plattform an | Request-Handler returnt, bevor der Outbound-Call resolved hat | Outbound-Call `await`en bevor du returnst |
 | Login-Seite 500 mit `displayWide`-Macro | Client hat Custom Login Theme | Theme auf leer setzen |

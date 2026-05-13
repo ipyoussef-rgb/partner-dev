@@ -53,7 +53,7 @@ Sorted by HTTP status code. If you don't see your error here, contact your Solut
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| Payment status forever PENDING | `merchantCallback` URL is relative or unreachable | Absolute URL with explicit `APP_BASE_URL` |
+| Payment status forever PENDING | `merchantCallback` URL is relative or unreachable | Use an absolute, publicly reachable URL |
 | Payment status overwritten with `UNKNOWN` / `inquiring status` | Naive persistence of `/status` ack | See the [persistence rule](/payments#46--never-overwrite-a-final-status) |
-| Action returns 200 but no chat received | `void promise` killed when serverless function returned | Use `import { after } from "next/server"` for outbound work |
+| Outbound API call returns 200 in your handler but never reaches the platform | Request handler returned before the outbound call resolved | `await` the API call before returning from your handler |
 | Login page 500 with `displayWide` macro | Client has custom Login Theme | Set Login Theme to empty on the client |
