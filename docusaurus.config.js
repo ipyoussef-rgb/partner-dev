@@ -3,14 +3,14 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'KOBIL Partner Dev',
-  tagline: 'Build your Super App on KOBIL — partner integration guide',
+  title: 'Germany App – Partner Integration',
+  tagline: 'Integrate your service into the Germany App',
   favicon: 'img/favicon.svg',
 
   url: 'https://partner-dev.vercel.app',
   baseUrl: '/',
 
-  organizationName: 'ipyoussef-rgb',
+  organizationName: 'ipyoussef',
   projectName: 'partner-dev',
 
   onBrokenLinks: 'warn',
@@ -40,7 +40,6 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.js',
-          editUrl: 'https://github.com/ipyoussef-rgb/partner-dev/edit/main/',
         },
         blog: false,
         theme: {
@@ -59,27 +58,17 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'KOBIL Partner Dev',
+        title: 'Germany App – Partner Integration',
         logo: {
-          alt: 'KOBIL',
+          alt: 'Germany App',
           src: 'img/logo.svg',
         },
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'superappSidebar',
+            sidebarId: 'integrationSidebar',
             position: 'left',
-            label: 'Super App Services',
-          },
-          {
-            href: 'https://documentation.cloud.kobil.com',
-            label: 'Official docs',
-            position: 'right',
-          },
-          {
-            href: 'https://github.com/ipyoussef-rgb/partner-dev',
-            label: 'GitHub',
-            position: 'right',
+            label: 'Integration Guide',
           },
           {
             type: 'localeDropdown',
@@ -91,29 +80,15 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Integration',
             items: [
-              { label: 'Super App Services', to: '/superapp-services' },
-              { label: 'Quickstart', to: '/superapp-services/quickstart' },
-              { label: 'Production checklist', to: '/superapp-services/reference/production-checklist' },
-            ],
-          },
-          {
-            title: 'KOBIL',
-            items: [
-              { label: 'Official documentation', href: 'https://documentation.cloud.kobil.com' },
-              { label: 'KOBIL website', href: 'https://kobil.com' },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              { label: 'Sample app (terbuch)', href: 'https://github.com/ipyoussef-rgb/terbuch' },
-              { label: 'This site on GitHub', href: 'https://github.com/ipyoussef-rgb/partner-dev' },
+              { label: 'Overview', to: '/' },
+              { label: 'Step 1 – Get Credentials', to: '/get-credentials' },
+              { label: 'Step 5 – Go Live', to: '/go-live' },
             ],
           },
         ],
-        copyright: `Built ${new Date().getFullYear()} for partner integration. Verified content sourced from internal references — see "Last verified" footers.`,
+        copyright: `Germany App Partner Integration · ${new Date().getFullYear()} · Powered by KOBIL Superapp Platform`,
       },
       prism: {
         theme: prismThemes.github,

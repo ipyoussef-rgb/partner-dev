@@ -1,22 +1,14 @@
 {
   "title": {
-    "message": "KOBIL Partner Dev",
+    "message": "Germany App – Partner-Integration",
     "description": "The title in the navbar"
   },
   "logo.alt": {
-    "message": "KOBIL",
+    "message": "Germany App",
     "description": "The alt text of navbar logo"
   },
-  "item.label.Super App Services": {
-    "message": "Super App Services",
-    "description": "Navbar item with label Super App Services"
-  },
-  "item.label.Official docs": {
-    "message": "Offizielle Doku",
-    "description": "Navbar item with label Official docs"
-  },
-  "item.label.GitHub": {
-    "message": "GitHub",
-    "description": "Navbar item with label GitHub"
+  "item.label.Integration Guide": {
+    "message": "Integrations-Guide",
+    "description": "Navbar item label for the docs sidebar"
   }
 }

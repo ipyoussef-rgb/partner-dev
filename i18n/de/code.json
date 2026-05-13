@@ -1,58 +1,70 @@
 {
   "home.title": {
-    "message": "KOBIL Partner Dev",
+    "message": "Germany App – Partner-Integration",
     "description": "Browser tab title"
   },
   "home.metaDescription": {
-    "message": "Baue deine Super App auf KOBIL — Partner-Integrationsdokumentation auf Englisch und Deutsch.",
+    "message": "Integriere deinen Dienst in die Germany App. Schritt-für-Schritt-Leitfaden für Partner — Deutsch und Englisch.",
     "description": "Meta description"
   },
   "home.tagline": {
-    "message": "Baue deine Super App auf KOBIL — Integrationsleitfaden für Partner.",
+    "message": "Integriere deinen Dienst in die Germany App.",
     "description": "Hero subtitle"
   },
   "home.description": {
-    "message": "Verifizierte Endpoints, Body-Schemas, Sequenzdiagramme und ein 60-Minuten-End-to-End-Quickstart für Partner, die KOBIL Identity, Chat und Pay integrieren.",
+    "message": "Die Germany App ist die vertrauenswürdige Superapp, in der Bürger:innen digitale Dienste mit verifizierter mobiler Identität nutzen. Bau Login, Chat und Payments in fünf klaren Schritten in deinen Dienst ein.",
     "description": "Hero description"
   },
   "home.cta.start": {
-    "message": "0. Hier starten →",
+    "message": "Schritt 1 — Credentials holen →",
     "description": "Primary CTA"
   },
-  "home.cta.quickstart": {
-    "message": "1. Quickstart (60 Min)",
+  "home.cta.overview": {
+    "message": "Übersicht lesen",
     "description": "Secondary CTA"
   },
-  "home.feat.identity.title": {
-    "message": "KOBIL Identity",
-    "description": "Feature card title"
+  "home.steps.title": {
+    "message": "Der 5-Schritt-Pfad",
+    "description": "Steps section heading"
   },
-  "home.feat.identity.desc": {
-    "message": "OIDC-Login auf Keycloak-Basis, mit dem zweiten Faktor in mIdentity.",
-    "description": "Feature card description"
+  "home.step1.title": {
+    "message": "Credentials holen",
+    "description": "Step 1 title"
   },
-  "home.feat.chat.title": {
-    "message": "KOBIL Chat (mPower)",
-    "description": "Feature card title"
+  "home.step1.desc": {
+    "message": "Zwei OIDC-Clients in deinem Tenant — einer für Login, einer für Server-zu-Server.",
+    "description": "Step 1 description"
   },
-  "home.feat.chat.desc": {
-    "message": "Server → Nutzer-Messaging mit Reply-Webhooks. Verifiziertes Body-Schema, Stolperfallen aufgelistet.",
-    "description": "Feature card description"
+  "home.step2.title": {
+    "message": "Login einbauen",
+    "description": "Step 2 title"
   },
-  "home.feat.pay.title": {
-    "message": "KOBIL Pay (mPay)",
-    "description": "Feature card title"
+  "home.step2.desc": {
+    "message": "Anmeldung über mobile Identität. Biometrische Bestätigung in der mIdentity-App des Users.",
+    "description": "Step 2 description"
   },
-  "home.feat.pay.desc": {
-    "message": "Merchant-Transaktionen, in mIdentity signiert. Vollständige 12-Status-Tabelle und Persistenz-Regel enthalten.",
-    "description": "Feature card description"
+  "home.step3.title": {
+    "message": "Chat einbauen",
+    "description": "Step 3 title"
   },
-  "home.feat.prod.title": {
-    "message": "Production-Checkliste",
-    "description": "Feature card title"
+  "home.step3.desc": {
+    "message": "Server-zu-User-Messaging mit kryptografischem Zustellnachweis. Antworten via Webhook.",
+    "description": "Step 3 description"
   },
-  "home.feat.prod.desc": {
-    "message": "Alles, was vor der Umstellung einer KOBIL-Integration auf Produktiv-Traffic verifiziert sein muss.",
-    "description": "Feature card description"
+  "home.step4.title": {
+    "message": "Payments einbauen",
+    "description": "Step 4 title"
+  },
+  "home.step4.desc": {
+    "message": "Vom User signierte Transaktionen in mIdentity. Kein Card-Network-Aufwand auf deiner Seite.",
+    "description": "Step 4 description"
+  },
+  "home.step5.title": {
+    "message": "Go Live",
+    "description": "Step 5 title"
+  },
+  "home.step5.desc": {
+    "message": "Produktions-Checkliste — jeder Punkt hat in mindestens einem echten Launch wehgetan.",
+    "description": "Step 5 description"
   }
 }

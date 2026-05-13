@@ -1,46 +1,22 @@
 {
-  "link.title.Docs": {
-    "message": "Doku",
-    "description": "The title of the footer links column with title=Docs"
+  "link.title.Integration": {
+    "message": "Integration",
+    "description": "Footer column title"
   },
-  "link.title.KOBIL": {
-    "message": "KOBIL",
-    "description": "The title of the footer links column with title=KOBIL"
+  "link.item.label.Overview": {
+    "message": "Übersicht",
+    "description": "Footer link to overview page"
   },
-  "link.title.More": {
-    "message": "Mehr",
-    "description": "The title of the footer links column with title=More"
+  "link.item.label.Step 1 – Get Credentials": {
+    "message": "Schritt 1 – Credentials holen",
+    "description": "Footer link to step 1"
   },
-  "link.item.label.Super App Services": {
-    "message": "Super App Services",
-    "description": "Footer link"
-  },
-  "link.item.label.Quickstart": {
-    "message": "Quickstart",
-    "description": "Footer link"
-  },
-  "link.item.label.Production checklist": {
-    "message": "Production-Checkliste",
-    "description": "Footer link"
-  },
-  "link.item.label.Official documentation": {
-    "message": "Offizielle Dokumentation",
-    "description": "Footer link"
-  },
-  "link.item.label.KOBIL website": {
-    "message": "KOBIL-Website",
-    "description": "Footer link"
-  },
-  "link.item.label.Sample app (terbuch)": {
-    "message": "Beispiel-App (terbuch)",
-    "description": "Footer link"
-  },
-  "link.item.label.This site on GitHub": {
-    "message": "Diese Seite auf GitHub",
-    "description": "Footer link"
+  "link.item.label.Step 5 – Go Live": {
+    "message": "Schritt 5 – Go Live",
+    "description": "Footer link to step 5"
   },
   "copyright": {
-    "message": "Erstellt {year} für die Partner-Integration. Verifizierte Inhalte aus internen Referenzen — siehe \"Zuletzt verifiziert\"-Footer.",
+    "message": "Germany App Partner-Integration · {year} · Powered by KOBIL Superapp-Plattform",
     "description": "The footer copyright"
   }
 }
