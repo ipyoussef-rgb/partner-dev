@@ -5,8 +5,5 @@
   "installCommand": "npm install",
   "framework": "docusaurus-2",
   "trailingSlash": false,
-  "cleanUrls": true,
-  "env": {
-    "NODE_VERSION": "20"
-  }
+  "cleanUrls": true
 }
